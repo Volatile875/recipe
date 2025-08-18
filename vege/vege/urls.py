@@ -29,7 +29,7 @@ urlpatterns = [
      # This handles the root path
     path('', lag, name='lag'),
     path('first/', first, name='first'),
-    path('delete-recepie<int:id>/', delete_recepie , name='delete-recepie'),
+    path('delete-recepie/<int:id>/', delete_recepie , name='delete-recepie'),
 ]
 
 if settings.DEBUG:
@@ -37,4 +37,3 @@ if settings.DEBUG:
                     document_root=settings.MEDIA_ROOT)
 
 
-urlpatterns += staticfiles_urlpatterns()
