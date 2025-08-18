@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{Recepie}}</title>
+        <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    </style>
+</head>
+<body>
+        
+
+<div class="container mt-5">
+    
+<form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <h2 class="text-center">Add Recepie</h2>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Recepie name</label>
+    <input name="recepie_name"required type="text" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Recepie description</label>
+    <textarea name="recepie_description" class="form-control" required></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="imageInput" class="form-label">Recepie Image</label>
+    <input name="recepie_image" type="file" class="form-control" id="imageInput">
+  </div>
+  <button type="submit" class="btn btn-primary">Add Recepie</button>
+</form>
+
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Recepie name</th>
+      <th scope="col">Recepie Desc</th>
+      <th scope="col">Image</th>
+      <th scope="Actions"<\th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for recepie in recepies %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{recepie.recepie_name}}</td>
+      <td>{{recepie.recepie_description}}</td>
+      <td>{{recepie.recepie_image.url}}</td>
+      <td>{{recepie.recepie_image}}</td>
+      <td><img src="/media/{{recepie.recepie_image}}" style="height : 100px"</td>
+      <td>
+
+        <a href="/delete-recepie{{recepie.id}}/" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+      </td>
+    </tr>
+     
+    {% endfor %}
+  </tbody>
+</table>
+
+</div>
+
+    <script>
+        console.log("Hey Django!!!")
+    </script>
+        <!-- Bootstrap JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
